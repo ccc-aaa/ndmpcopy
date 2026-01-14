@@ -35,16 +35,16 @@ SHELL = /bin/sh
 CC = gcc
 CP = cp
 CHMOD = chmod
-CFLAGS = -g -w 
+CFLAGS = -g -w $(shell pkgconf --cflags libtirpc)
 LIBDIR = ../lib
 INCLUDES = -I$(LIBDIR)
  
 LD = $(CC)
 LDFLAGS = 
 # These should work for solaris 2.5
-LIBS = -L$(LIBDIR) -lndmp -lsocket -lnsl
+# LIBS = -L$(LIBDIR) -lndmp -lsocket -lnsl
 # These should work for linux
-#LIBS = -L$(LIBDIR) -lndmp
+LIBS = -L$(LIBDIR) $(shell pkgconf --libs libtirpc) -lndmp
 
  
 TARGET = ndmpcopy

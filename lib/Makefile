@@ -38,7 +38,7 @@
 CC = gcc
 CP = cp
 CHMOD = chmod
-CFLAGS = -g -w
+CFLAGS = -g -w $(shell pkgconf --cflags libtirpc)
 
 
 TARGETS_H = log.h ndmp.h ndmp_common.h

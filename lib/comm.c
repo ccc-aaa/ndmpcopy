@@ -55,12 +55,12 @@
 
 static int
 ndmp_readit(void*		connectionHandle,
-			caddr_t		buf,
+			void*		buf,
 			int			len);
 
 static int
 ndmp_writeit(void*		connectionHandle,
-			 caddr_t	buf,
+			 void*	buf,
 			 int		len);
 
 static int
@@ -896,7 +896,7 @@ longLongToQuad(u_longlong_t	ull)
  */
 static int
 ndmp_readit(void*		connectionHandle,
-			caddr_t		buf,
+			void*		buf,
 			int			len)
 {
 	Connection	*connection = (Connection *)connectionHandle;
@@ -904,7 +904,7 @@ ndmp_readit(void*		connectionHandle,
 	Debug(DBG_CAT_COMM|DBG_FOC_DETAIL,
 		  "ndmp_readit: len:%d\n", len);
 
-	len = read(connection->sock, buf, len);
+	len = read(connection->sock, (char*)buf, len);
 /*
 	printf("Khushal : ndmp_readit: len %d\n", len);
 */
@@ -935,7 +935,7 @@ ndmp_readit(void*		connectionHandle,
  */
 static int
 ndmp_writeit(void*		connectionHandle,
-			 caddr_t	buf,
+			 void*	buf,
 			 int		len)
 {
 	Connection		*connection = (Connection *)connectionHandle;

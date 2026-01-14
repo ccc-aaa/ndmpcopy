@@ -45,6 +45,8 @@ extern NdmpConnection dump_connection;
 extern int establish_connection();
 extern int shutdown_connection(void);
 extern int ndmp_dump();
+int ndmp_open_connection(NdmpConnection *ndmp_connection, char *dest_host, int port, struct auth_info ainfo);
+int ndmp_stop();
 int		ndmp_restore(void);
 int estb_data_conn();
 
